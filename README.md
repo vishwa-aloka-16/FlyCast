@@ -1,7 +1,3 @@
-Here's an updated version of the GitHub documentation reflecting that this is a basic version of a larger project:
-
----
-
 # Flight Delay Prediction with Logistic Regression (Basic Version)
 
 This project serves as a basic version of a larger flight delay prediction system, where logistic regression is used to predict flight cancellations based on the airline, origin, and destination. The dataset has been simplified for this demonstration, with the original data being unavailable for upload. A reduced version of the dataset is available in the `data/flight_delays_test.csv` file.
@@ -102,5 +98,3 @@ flight-delay-prediction/
 Documantaion is genarated using Chat GPT (By Vishwa Aloka)
 
 ---
-
-Let me know if you want to make any further adjustments!
