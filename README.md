@@ -1,6 +1,10 @@
-# Flight Delay Prediction with Logistic Regression
+Here's an updated version of the GitHub documentation reflecting that this is a basic version of a larger project:
 
-This project uses logistic regression to predict flight cancellations based on the airline, origin, and destination. The dataset has been processed and simplified for demonstration purposes. The original dataset cannot be uploaded, but a reduced version is available in the `data/flight_delays_test.csv` file.
+---
+
+# Flight Delay Prediction with Logistic Regression (Basic Version)
+
+This project serves as a basic version of a larger flight delay prediction system, where logistic regression is used to predict flight cancellations based on the airline, origin, and destination. The dataset has been simplified for this demonstration, with the original data being unavailable for upload. A reduced version of the dataset is available in the `data/flight_delays_test.csv` file.
 
 ## Requirements
 
@@ -19,18 +23,18 @@ pip install pandas scikit-learn seaborn matplotlib
 
 ## Project Overview
 
-The model is trained to predict the probability of flight cancellations using logistic regression. It uses a simplified dataset where categorical variables such as `Airline`, `Origin`, and `Destination` are encoded into numeric values. The model's performance is evaluated using classification metrics such as confusion matrix and classification report.
+This basic version focuses on logistic regression for predicting flight cancellations, using a subset of features. The larger project will incorporate additional prediction features, such as flight delays, and a user integration system for personalized notifications and decision support.
 
 ### Data
 
-The dataset used for this project has been reduced for performance and simplicity. The original dataset, containing detailed flight data, cannot be uploaded due to privacy or file size restrictions. A subset of this data is available in the `data/flight_delays_test.csv` file for use in the model.
+The dataset used for this project has been reduced to fit the scope of the basic version. The original dataset, containing more detailed flight data, cannot be uploaded due to privacy or file size constraints. A simplified version of the dataset is available in the `data/flight_delays_test.csv` file.
 
 ### Code Overview
 
 1. **Load and Process Data:**
 
    * The data is loaded from a CSV file using `pandas`.
-   * The relevant columns (`Airline`, `Origin`, `Destination`, `Cancelled`) are selected and stored in `delay_df`.
+   * Relevant columns (`Airline`, `Origin`, `Destination`, `Cancelled`) are selected.
    * The `Cancelled` column is converted from boolean to integer (`0` for not cancelled, `1` for cancelled).
 
 2. **Label Encoding:**
@@ -39,14 +43,21 @@ The dataset used for this project has been reduced for performance and simplicit
 
 3. **Model Training and Prediction:**
 
-   * The features `Airline`, `Origin`, and `Destination` are one-hot encoded using `pd.get_dummies`.
-   * The data is split into training and testing sets (60% training, 40% testing) using `train_test_split`.
-   * A logistic regression model is trained on the training data, and predictions are made on the test data.
+   * One-hot encoding is used for the features (`Airline`, `Origin`, `Destination`).
+   * Data is split into training and testing sets (60% training, 40% testing).
+   * Logistic regression is applied to predict flight cancellations.
 
 4. **Model Evaluation:**
 
-   * The confusion matrix and classification report are generated to evaluate the model's performance.
-   * A heatmap of the confusion matrix is displayed using `seaborn` for better visualization.
+   * Confusion matrix and classification report are used to evaluate the model.
+   * A heatmap visualization of the confusion matrix is displayed for better interpretation.
+
+### Next Steps
+
+This is the first step in a larger project aimed at predicting flight delays and providing user integration. The upcoming versions of this project will include:
+
+* **Delay Prediction:** Extend the current model to predict actual delays, not just cancellations.
+* **User Integration:** Build a system that allows users to input flight details and receive real-time predictions on cancellations and delays.
 
 ### Steps to Run
 
@@ -71,7 +82,7 @@ The dataset used for this project has been reduced for performance and simplicit
    python flight_delay_prediction.py
    ```
 
-5. The confusion matrix and classification report will be displayed in the terminal, and the confusion matrix will also be visualized in a heatmap.
+5. The confusion matrix and classification report will be displayed, and a heatmap of the confusion matrix will be visualized.
 
 ### File Structure
 
@@ -86,4 +97,10 @@ flight-delay-prediction/
 └── README.md                      # Project documentation
 ```
 
+## License
 
+Documantaion is genarated using Chat GPT (By Vishwa Aloka)
+
+---
+
+Let me know if you want to make any further adjustments!
