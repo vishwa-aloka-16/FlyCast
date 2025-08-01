@@ -60,7 +60,7 @@ This is the first step in a larger project aimed at predicting flight delays and
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/flight-delay-prediction.git
+   git clone https://github.com/vishwaaloka16/flight-delay-prediction.git
    cd flight-delay-prediction
    ```
 
