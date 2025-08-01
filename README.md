@@ -95,4 +95,4 @@ flight-delay-prediction/
 
 ## License
 ---
-<small>Documantaion is genarated using Chat GPT (By Vishwa Aloka)</small>
+<sub>Documantaion is genarated using Chat GPT (By Vishwa Aloka)</sub>
