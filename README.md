@@ -86,8 +86,4 @@ flight-delay-prediction/
 └── README.md                      # Project documentation
 ```
 
-## License
-Documantaion is AI grnarated (By Vishwa Aloka)
----
 
-Feel free to adjust the repository name, paths, and other details as needed!
