@@ -95,4 +95,5 @@ flight-delay-prediction/
 
 ## License
 ---
-<sub>Documantaion is genarated using Chat GPT (By Vishwa Aloka)</sub>
+
+<sub>Documentation is generated using AI errors can occur (By Vishwa Aloka auther)</sub>
