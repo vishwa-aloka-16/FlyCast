@@ -96,4 +96,4 @@ flight-delay-prediction/
 ## License
 ---
 
-<sub>Documentation is generated using AI errors can occur (By Vishwa Aloka auther)</sub>
+<sub>Documentation (By Vishwa Aloka auther)</sub>
