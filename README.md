@@ -125,7 +125,6 @@ Data used in this project can be sourced from:
 ## Author
 
 **Vishwa Aloka Bandara**
-Aspiring Data Scientist | Open to internship opportunities
 
 ---
 
