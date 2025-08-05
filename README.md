@@ -1,15 +1,12 @@
----
-
 # Flight Delay and Cancellation Prediction
 
 This repository contains two machine learning projects focused on:
 
-* Flight Delay Prediction
-* Flight Cancellation Prediction
+- Flight Delay Prediction
+- Flight Cancellation Prediction
 
 The objective is to apply supervised learning techniques to historical flight data to predict whether a flight will be delayed or canceled. These models are intended to support airline operations and enhance customer service planning.
 
----
 
 ## Project Structure
 
