@@ -9,8 +9,8 @@ CORS(app)
 
 # Load trained model and model columns
 model_path = os.path.dirname(__file__)
-model = joblib.load(os.path.join(model_path, 'flight_delay_model.pkl'))
-model_columns = joblib.load(os.path.join(model_path, 'model_columns.pkl'))
+model = joblib.load(os.path.join(model_path, 'pred_model/flight_delay_model.pkl'))
+model_columns = joblib.load(os.path.join(model_path, 'pred_model/model_columns.pkl'))
 
 @app.route('/predict', methods=['POST'])
 def predict():
