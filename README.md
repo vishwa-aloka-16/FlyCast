@@ -37,6 +37,8 @@ The user interface is built using simple HTML, CSS (via Bootstrap or custom), an
 
 ### UI Preview
 
+https://github.com/user-attachments/assets/71057a47-d419-4780-8e29-a2e5023c379a
+
 <img width="1894" height="905" alt="image" src="https://github.com/user-attachments/assets/6906b0c2-ee13-4026-aab9-a455e26250fe" />
 
 
