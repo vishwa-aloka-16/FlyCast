@@ -37,7 +37,8 @@ The user interface is built using simple HTML, CSS (via Bootstrap or custom), an
 
 ### UI Preview
 
-![User Interface](https://github.com/vishwa-aloka-16/FlyCast/blob/main/assets/ui-preview.png)
+<img width="1893" height="904" alt="image" src="https://github.com/user-attachments/assets/7dde6af5-7b1a-4006-88d3-631adb4ae5ad" />
+
 
 ---
 
