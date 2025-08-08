@@ -2,7 +2,7 @@
 
 FlyCast is a web-based application that predicts the probability of a flight being delayed based on airline, origin, destination, departure time, and date. It uses a machine learning model trained on historical US domestic flight data and provides users with real-time predictions and alternative flight suggestions.
 
----
+***
 
 ## Features
 
@@ -15,14 +15,13 @@ FlyCast is a web-based application that predicts the probability of a flight bei
 * Suggests alternative flights with lower delay chances
 * Cross-Origin support enabled using Flask-CORS
 
----
+***
 
 ## User Interface
 
 The user interface is built using simple HTML, CSS (via Bootstrap or custom), and JavaScript. It consists of:
 
 * A form to enter flight details:
-
   * Airline
   * Departure Airport
   * Arrival Airport
@@ -30,19 +29,15 @@ The user interface is built using simple HTML, CSS (via Bootstrap or custom), an
   * Departure Date
 * A "Check Flight Delay" button to send data to the backend
 * A result section that displays:
-
   * Submitted flight information
   * Predicted delay probability (in percentage)
   * Suggested alternative flights with potentially lower delay chances
 
 ### UI Preview
 
-https://github.com/user-attachments/assets/71057a47-d419-4780-8e29-a2e5023c379a
-
-<img width="1894" height="905" alt="image" src="https://github.com/user-attachments/assets/6906b0c2-ee13-4026-aab9-a455e26250fe" />
 
 
----
+***
 
 ## Project Structure
 
@@ -65,7 +60,7 @@ FlyCast/
 └── README.md
 ```
 
----
+***
 
 ## How It Works
 
@@ -77,10 +72,10 @@ The model is trained using the following features:
 * ORIGIN
 * DEST
 * MONTH
-* DAY\_OF\_WEEK (1 = Monday, ..., 7 = Sunday)
-* DEP\_HOUR
+* DAY_OF_WEEK (1 = Monday, ..., 7 = Sunday)
+* DEP_HOUR
 
-Saved using `joblib`:
+The model and its training columns are saved using `joblib`:
 
 ```python
 joblib.dump(model, 'flight_delay_model.pkl')
@@ -89,12 +84,12 @@ joblib.dump(model_columns, 'model_columns.pkl')
 
 ### Backend (Flask)
 
-* Accepts JSON input
-* One-hot encodes the data
-* Aligns columns with model training columns
-* Returns delay probability
+* Accepts JSON input via POST request
+* One-hot encodes the input data
+* Aligns data columns with columns used during model training
+* Returns delay probability as JSON response
 
-Example:
+Example prediction endpoint:
 
 ```python
 @app.route('/predict', methods=['POST'])
@@ -108,19 +103,19 @@ def predict():
 
 ### Frontend
 
-* HTML form for input
-* JavaScript handles form submission
-* Sends a fetch request to Flask API
-* Displays delay percentage and color-coded feedback
+* HTML form for user input
+* JavaScript handles form submission asynchronously
+* Sends fetch request to backend API
+* Displays delay percentage with color-coded feedback to user
 
----
+***
 
 ## Getting Started
 
 ### Prerequisites
 
-* Python 3.7+
-* pip
+* Python 3.7 or higher
+* pip (Python package installer)
 
 ### Installation
 
@@ -131,41 +126,45 @@ git clone https://github.com/vishwa-aloka-16/FlyCast.git
 cd FlyCast
 ```
 
-2. Create and activate virtual environment
+2. Create and activate a virtual environment
 
 ```bash
 python -m venv venv
-venv\Scripts\activate   # On Windows
+# Windows
+venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
 ```
 
-3. Install dependencies
+3. Install project dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Run Flask server
+4. Run the Flask backend server
 
 ```bash
 cd app
 python app.py
 ```
 
-The backend will run at `http://localhost:5000`.
+The backend server will start running at `http://localhost:5000`.
 
----
+***
 
 ## Frontend Usage
 
-1. Open `app/index.html` in your browser
-2. Fill in flight details and click **Check Flight Delay**
-3. View the prediction and suggestions on the right
+1. Open `app/index.html` in your preferred web browser.
+2. Fill in the flight details in the form.
+3. Click **Check Flight Delay**.
+4. View the predicted delay probability and alternative flight suggestions on the screen.
 
----
+***
 
 ## API Example
 
-**Endpoint:** `POST /predict`
+**Endpoint:** `POST /predict`  
 **Content-Type:** `application/json`
 
 **Request Body:**
@@ -190,10 +189,38 @@ The backend will run at `http://localhost:5000`.
 }
 ```
 
----
+***
+
+## Model Performance
+
+The flight delay prediction model was evaluated on a test dataset and achieved the following results:
+
+| Class        | Precision | Recall | F1-Score | Support  |
+|--------------|-----------|--------|----------|----------|
+| 0 (On-time)  | 0.96      | 0.95   | 0.96     | 481,638  |
+| 1 (Delayed)  | 0.78      | 0.81   | 0.80     | 102,534  |
+
+**Overall Metrics:**
+
+* Accuracy: 0.93  
+* Macro Average Precision: 0.87  
+* Macro Average Recall: 0.88  
+* Macro Average F1-Score: 0.88  
+* Weighted Average Precision: 0.93  
+* Weighted Average Recall: 0.93  
+* Weighted Average F1-Score: 0.93  
+
+**Confusion Matrix:**
+
+|               | Predicted 0 | Predicted 1 |
+|---------------|-------------|-------------|
+| Actual 0      | 458,776     | 22,862      |
+| Actual 1      | 19,758      | 82,776      |
+
+***
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
+***
