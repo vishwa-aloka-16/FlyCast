@@ -7,7 +7,7 @@ FlyCast is a web-based application that predicts the probability of a flight bei
 ## Features
 
 * Predicts flight delay probability based on user input
-* Uses a trained machine learning model (`RandomForestClassifier`)
+* Uses a trained machine learning model (`XGBClassifier`)
 * Flask backend handles API requests and model inference
 * Frontend built with HTML, CSS, and JavaScript
 * Dynamic form processing and display using JavaScript
@@ -53,7 +53,7 @@ FlyCast/
 │   └── script.js            # JavaScript logic
 ├── model/
 │   ├── data/
-│   │   └── flight_delays_test.csv
+│   │   └── flight_sample_3m.csv
 │   ├── flight_cancellation_prediction.ipynb
 │   └── flight_delay_prediction.ipynb
 ├── .gitignore
