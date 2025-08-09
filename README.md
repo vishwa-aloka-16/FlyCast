@@ -37,6 +37,10 @@ The user interface is built using simple HTML, CSS (via Bootstrap or custom), an
 
 
 
+https://github.com/user-attachments/assets/389f64df-8a11-4b82-8fa3-68bb46299d1c
+
+
+
 ***
 
 ## Project Structure
