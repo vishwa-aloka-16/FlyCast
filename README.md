@@ -1,60 +1,56 @@
-# FlyCast - Flight Delay Prediction Web Application
+---
 
-FlyCast is a web-based application that predicts the probability of a flight being delayed based on airline, origin, destination, departure time, and date. It uses a machine learning model trained on historical US domestic flight data and provides users with real-time predictions and alternative flight suggestions.
+# **FlyCast – Flight Delay Prediction Web Application**
 
-***
+**FlyCast** is a web-based application that predicts the probability of a flight being delayed based on airline, origin, destination, departure time, and date.
+It uses a machine learning model trained on historical U.S. domestic flight data to deliver real-time predictions and suggest alternative flights with lower delay chances.
 
-## Features
+---
 
-* Predicts flight delay probability based on user input
-* Uses a trained machine learning model (`XGBClassifier`)
-* Flask backend handles API requests and model inference
-* Frontend built with HTML, CSS, and JavaScript
-* Dynamic form processing and display using JavaScript
-* Delay probability displayed with color-coded feedback
-* Suggests alternative flights with lower delay chances
-* Cross-Origin support enabled using Flask-CORS
+## **Features**
 
-***
+* Predicts flight delay probability from user input.
+* Powered by an **XGBoost Classifier** trained on historical data.
+* Flask backend for API handling and model inference.
+* Frontend built with HTML, CSS, and JavaScript.
+* Dynamic asynchronous form submission.
+* Color-coded delay probability feedback.
+* Alternative flight suggestions with lower delay probability.
+* CORS enabled for cross-origin requests.
 
-## User Interface
+---
 
-The user interface is built using simple HTML, CSS (via Bootstrap or custom), and JavaScript. It consists of:
+## **User Interface**
 
-* A form to enter flight details:
-  * Airline
-  * Departure Airport
-  * Arrival Airport
-  * Departure Time
-  * Departure Date
-* A "Check Flight Delay" button to send data to the backend
-* A result section that displays:
-  * Submitted flight information
-  * Predicted delay probability (in percentage)
-  * Suggested alternative flights with potentially lower delay chances
+The interface provides:
 
-### UI Preview
+* A flight details form (Airline, Origin, Destination, Date, Time).
+* **Check Flight Delay** button to trigger the API call.
+* A results section showing delay probability and alternative flights.
 
+📷 **UI Preview**
 
+<img width="1896" height="906" alt="Screenshot 2025-08-15 180429" src="https://github.com/user-attachments/assets/8f744d64-0015-45d2-b9b3-2d041ce8bd37" />
 
-https://github.com/user-attachments/assets/389f64df-8a11-4b82-8fa3-68bb46299d1c
+<img width="1898" height="806" alt="Screenshot 2025-08-15 180404" src="https://github.com/user-attachments/assets/25c3ebf8-78f6-446c-a2b5-0185fa515e7c" />
 
+---
 
-
-***
-
-## Project Structure
+## **Project Structure**
 
 ```
 FlyCast/
 ├── app/
 │   ├── pred_model/
 │   │   ├── flight_delay_model.pkl
+│   │   ├── flight_prediction_api.py
 │   │   └── model_columns.pkl
-│   ├── venv/
-│   ├── app.py               # Flask backend
-│   ├── index.html           # Frontend UI
-│   └── script.js            # JavaScript logic
+│   ├── src/
+│   │   ├── airline.png
+│   │   ├── flightData.js
+│   │   ├── index.html
+│   │   ├── script.js
+│   │   └── style.css
 ├── model/
 │   ├── data/
 │   │   └── flight_sample_3m.csv
@@ -64,36 +60,29 @@ FlyCast/
 └── README.md
 ```
 
-***
+---
 
-## How It Works
+## **How It Works**
 
-### Model
+### **1. Model**
 
-The model is trained using the following features:
+* Trained on the following features:
 
-* AIRLINE
-* ORIGIN
-* DEST
-* MONTH
-* DAY_OF_WEEK (1 = Monday, ..., 7 = Sunday)
-* DEP_HOUR
-
-The model and its training columns are saved using `joblib`:
+  * **AIRLINE**, **ORIGIN**, **DEST**, **MONTH**, **DAY\_OF\_WEEK**, **DEP\_HOUR**
+* Saved using `joblib`:
 
 ```python
 joblib.dump(model, 'flight_delay_model.pkl')
 joblib.dump(model_columns, 'model_columns.pkl')
 ```
 
-### Backend (Flask)
+### **2. Backend (Flask)**
 
-* Accepts JSON input via POST request
-* One-hot encodes the input data
-* Aligns data columns with columns used during model training
-* Returns delay probability as JSON response
+* Accepts JSON POST requests.
+* One-hot encodes input and aligns columns to training format.
+* Returns delay probability and prediction class.
 
-Example prediction endpoint:
+**Example Flask Endpoint:**
 
 ```python
 @app.route('/predict', methods=['POST'])
@@ -101,86 +90,77 @@ def predict():
     ...
     return jsonify({
         'delay_probability': round(prediction, 4),
-        'delay_percent': f"{prediction * 100:.2f}%"
+        'prediction': int(prediction_class)
     })
 ```
 
-### Frontend
+### **3. Frontend**
 
-* HTML form for user input
-* JavaScript handles form submission asynchronously
-* Sends fetch request to backend API
-* Displays delay percentage with color-coded feedback to user
+* HTML + CSS for UI.
+* JavaScript (`fetch`) sends user input to the API.
+* Displays delay percentage with colored indicators.
 
-***
+---
 
-## Getting Started
+## **Getting Started**
 
-### Prerequisites
+**Prerequisites**
 
-* Python 3.7 or higher
-* pip (Python package installer)
+* Python 3.7+
+* pip package manager
 
-### Installation
-
-1. Clone the repository
+**Installation**
 
 ```bash
+# Clone repository
 git clone https://github.com/vishwa-aloka-16/FlyCast.git
 cd FlyCast
-```
 
-2. Create and activate a virtual environment
-
-```bash
+# Create and activate virtual environment
 python -m venv venv
 # Windows
 venv\Scripts\activate
 # macOS/Linux
 source venv/bin/activate
-```
 
-3. Install project dependencies
-
-```bash
+# Install dependencies
 pip install -r requirements.txt
-```
 
-4. Run the Flask backend server
-
-```bash
+# Run Flask server
 cd app
-python app.py
+python flight_prediction_api.py
 ```
 
-The backend server will start running at `http://localhost:5000`.
+Server will run at **[http://localhost:5000](http://localhost:5000)**
 
-***
+---
 
-## Frontend Usage
+## **Frontend Usage**
 
-1. Open `app/index.html` in your preferred web browser.
-2. Fill in the flight details in the form.
+1. Open `app/src/index.html` in your browser.
+2. Fill in the flight details.
 3. Click **Check Flight Delay**.
-4. View the predicted delay probability and alternative flight suggestions on the screen.
+4. View results and alternative suggestions.
 
-***
+---
 
-## API Example
+## **API Example**
 
-**Endpoint:** `POST /predict`  
-**Content-Type:** `application/json`
-
-**Request Body:**
+**Endpoint:** `POST /predict`
+**Request:**
 
 ```json
 {
-  "AIRLINE": "DL",
-  "ORIGIN": "LAX",
-  "DEST": "JFK",
   "MONTH": 8,
-  "DAY_OF_WEEK": 4,
-  "DEP_HOUR": 14
+  "DAY_OF_WEEK": 7,
+  "DEP_HOUR": 8,
+  "DISTANCE": 2475,
+  "DELAY_DUE_CARRIER": 0,
+  "DELAY_DUE_WEATHER": 0,
+  "DELAY_DUE_NAS": 0,
+  "AIRLINE_DL": 1,
+  "ORIGIN_LAX": 1,
+  "DEST_JFK": 1
 }
 ```
 
@@ -188,43 +168,77 @@ The backend server will start running at `http://localhost:5000`.
 
 ```json
 {
-  "delay_probability": 0.4508,
-  "delay_percent": "45.08%"
+  "delay_probability": 0.2067,
+  "prediction": 0
 }
 ```
 
-***
+---
 
-## Model Performance
+## **Updated API**
 
-The flight delay prediction model was evaluated on a test dataset and achieved the following results:
+The new frontend now transforms raw user input into model-ready features before sending it to `/predict`.
 
-| Class        | Precision | Recall | F1-Score | Support  |
-|--------------|-----------|--------|----------|----------|
-| 0 (On-time)  | 0.96      | 0.95   | 0.96     | 481,638  |
-| 1 (Delayed)  | 0.78      | 0.81   | 0.80     | 102,534  |
+| Frontend Field | Backend Feature(s) | Transformation                                                    |
+| -------------- | ------------------ | ----------------------------------------------------------------- |
+| `date`         | `MONTH`            | Extract month (1–12).                                             |
+| `date`         | `DAY_OF_WEEK`      | Extract day of week (Mon=1, Sun=7).                               |
+| `time`         | `DEP_HOUR`         | Extract hour (0–23) from time.                                    |
+| `dep` + `arr`  | `DISTANCE`         | Lookup airport-to-airport distance.                               |
+| `airline`      | `AIRLINE_<CODE>`   | One-hot encode airline code.                                      |
+| `dep`          | `ORIGIN_<CODE>`    | One-hot encode origin airport.                                    |
+| `arr`          | `DEST_<CODE>`      | One-hot encode destination airport.                               |
+| Checkboxes     | Delay cause fields | Map to `DELAY_DUE_CARRIER`, `DELAY_DUE_WEATHER`, `DELAY_DUE_NAS`. |
 
-**Overall Metrics:**
+**Example Conversion:**
 
-* Accuracy: 0.93  
-* Macro Average Precision: 0.87  
-* Macro Average Recall: 0.88  
-* Macro Average F1-Score: 0.88  
-* Weighted Average Precision: 0.93  
-* Weighted Average Recall: 0.93  
-* Weighted Average F1-Score: 0.93  
+*Form Input:*
 
-**Confusion Matrix:**
+```json
+{
+  "dep": "LAX",
+  "arr": "JFK",
+  "airline": "DL",
+  "date": "2025-08-15",
+  "time": "08:00",
+  "airports": false,
+  "weather": false,
+  "nas": false
+}
+```
 
-|               | Predicted 0 | Predicted 1 |
-|---------------|-------------|-------------|
-| Actual 0      | 458,776     | 22,862      |
-| Actual 1      | 19,758      | 82,776      |
+*Backend Payload:*
 
-***
+```json
+{
+  "MONTH": 8,
+  "DAY_OF_WEEK": 5,
+  "DEP_HOUR": 8,
+  "DISTANCE": 2475,
+  "DELAY_DUE_CARRIER": 0,
+  "DELAY_DUE_WEATHER": 0,
+  "DELAY_DUE_NAS": 0,
+  "AIRLINE_DL": 1,
+  "ORIGIN_LAX": 1,
+  "DEST_JFK": 1
+}
+```
 
-## License
+---
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+## **Model Performance**
 
-***
+| Class       | Precision | Recall | F1-Score | Support |
+| ----------- | --------- | ------ | -------- | ------- |
+| On-time (0) | 0.96      | 0.95   | 0.96     | 481,638 |
+| Delayed (1) | 0.78      | 0.81   | 0.80     | 102,534 |
+
+**Overall Accuracy:** 93%
+
+---
+
+## **License**
+
+Licensed under the MIT License – see [LICENSE](LICENSE).
+
+---
