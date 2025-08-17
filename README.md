@@ -28,6 +28,8 @@ The interface provides:
 
 📷 **UI Preview**
 
+<img width="1899" height="907" alt="image" src="https://github.com/user-attachments/assets/e3fa7695-c7bd-4723-8b74-b277b40aac42" />
+
 <img width="1898" height="806" alt="Screenshot 2025-08-15 180404" src="https://github.com/user-attachments/assets/25c3ebf8-78f6-446c-a2b5-0185fa515e7c" />
 
 <img width="1896" height="906" alt="Screenshot 2025-08-15 180429" src="https://github.com/user-attachments/assets/8f744d64-0015-45d2-b9b3-2d041ce8bd37" />
