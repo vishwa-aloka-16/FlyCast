@@ -22,12 +22,12 @@
                     <div>
                         <span>
                             <label for="from">From</label><br>
-                            <input list="airports" id="from" placeholder="Type airport" required>
+                            <input list="airports" id="from" placeholder="ENTER DEPARTURE AIRPORT" required>
                             <datalist id="airports"></datalist>
                         </span>
                         <span>
                             <label for="from">To</label><br>
-                            <input list="airports" id="to" placeholder="Type airport" required>
+                            <input list="airports" id="to" placeholder="ENTER ARRIVAL AIRPORT" required>
                             <datalist id="airports"></datalist>
                         </span>
                     </div>
@@ -44,7 +44,7 @@
                     <div>
                         <span>
                             <label for="from">Airline</label><br>
-                            <input list="airlines" id="airline" placeholder="Type airport" required>
+                            <input list="airlines" id="airline" placeholder="ENTER AIRLINE" required>
                             <datalist id="airlines"></datalist>
                         </span>
                         <span class="checkbox">
@@ -59,7 +59,7 @@
                         </span>
                     </div>
 
-                    <button id="continue" type="submit">Continue</button>
+                    <button id="continue" type="submit">Predict</button>
             </div>
             <div class="ticket-container">
                 <img id="imgTicket" src="./airline.png" alt="">
@@ -78,7 +78,6 @@
                 <h1><span id="dateTicket">_</span> | <span id="timeTicket">_</span></h1>
                 <h3></h3>
 
-                <button id="ticketBtn">Predict Fight Delay</button>
 
             </div>
         </div>
@@ -86,12 +85,12 @@
             <div class="prediction">
                 <ul>
                     <h2>Predictions</h2>
-                    <li>Fight Delay Probability <span id="probability">0.56</span></li>
-                    <li>Fight Delay Parentage <span id="parentage">56%</span></li>
+                    <li>Fight Delay Probability <span id="probability">0.00</span></li>
+                    <li>Fight Delay Parentage <span id="parentage">00%</span></li>
                     <li id="chanceOfDelayS"></li>
                 </ul>
                 <div id="chanceDiv">
-                    <h1><span id="chanceOfDelayL">HIGH</span></h1>
+                    <h1><span id="chanceOfDelayL">----</span></h1>
                     <p>Chance Of Delay</p>
                 </div>
             </div>

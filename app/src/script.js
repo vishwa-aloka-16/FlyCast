@@ -65,21 +65,24 @@ function updateTicketInfo() {
 }
 
 
-// Prepare data to send to API
+// Prepare data to send to API 
 function prepareData() {
+    const selectedDate = new Date(date.value);
+    
     const data = {
         dep: dep.value,
         arr: arr.value,
-        airline: airline.value,
-        date: date.value,
-        time: time.value,
-        airports: airports.checked,
-        weather: weather.checked,
-        nas: nas.checked,
+        AIRLINE: airline.value,
+        MONTH: parseInt(date.value.split('-')[1]),    // extract month as int
+        DAY_OF_WEEK: selectedDate.getDay(), // get day of the week (0-6, where 0 is Sunday)
+        DEP_HOUR: parseInt(time.value.split(':')[0]), // extract hour from time
+
+        // Checkboxes
+        DELAY_DUE_WEATHER: weather.checked ? 1 : 0,
+        DELAY_DUE_NAS: nas.checked ? 1 : 0,
 
         // Always fixed values
         DELAY_DUE_CARRIER: 0,
-        DELAY_DUE_WEATHER: 0
     };
     return data;
 }
@@ -109,14 +112,14 @@ function handleSubmit(event) {
         // Update the prediction elements with the response data
         probability.textContent = data.delay_probability;
         parentage.textContent = `${(data.delay_probability * 100)}%`;
-        if (data.probability > 0.7) {
+        if (data.delay_probability > 0.5) {
             chanceS.textContent = "There is a high Chance that your flight will be delayed";
             chanceL.textContent = "HIGH";
             chanceDiv.style.color = "#670000"; // Change background color for high chance
             chanceDiv.style.border = "#5px solid #670000"; // Change background color for high chance
             chanceDiv.style.animation = "blinkRed 1s infinite ease-out"; // Change background color for high chance
 
-        }else if (data.probability > 0.5) {
+        }else if (data.delay_probability > 0.4) {
             chanceS.textContent = "There is a Medium Chance that your flight will be delayed";
             chanceL.textContent = "MEDIUM";
             chanceDiv.style.color = "#ffd500"; // Change background color for high chance
